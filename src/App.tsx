@@ -1,10 +1,11 @@
-import CalculatorBody from "./components/CalculatorBody"
+import Calculator from "./components/Calculator"
+
 
 function App() {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <CalculatorBody />
+      <Calculator />
     </div>
   )
 }

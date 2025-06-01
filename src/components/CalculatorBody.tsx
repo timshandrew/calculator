@@ -1,11 +1,15 @@
-import CalculatorButton from "./CalculatorButton";
+import CalculatorButton, { type TLabel, type TVariant } from "./CalculatorButton";
 import buttonData from "../buttonData.json";
 import { getFrom2DArray } from "../utils/utils";
 
 const COLUMN_COUNT = 4;
 const ROW_COUNT = 5;
 
-export default function CalculatorBody() {
+type propTypes = {
+    setEntryStack
+}
+
+export default function CalculatorBody({setEntryStack}) {
     const buttons = [];
 
     for (let row = 0; row < ROW_COUNT; row++) {
@@ -20,8 +24,8 @@ export default function CalculatorBody() {
             buttons.push(
                 <CalculatorButton 
                     key={`${col}-${row}`} 
-                    label={label } 
-                    variant={variant }
+                    label={label as TLabel} 
+                    variant={variant as TVariant}
                 />
             )
         }
