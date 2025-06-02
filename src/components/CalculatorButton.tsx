@@ -1,12 +1,18 @@
-export type TLabel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | '.' | '+' | '-' | 'x' | '/' | 'DEL' | 'RESET' | '='
-export type TVariant = 'primary' | 'secondary' | 'tertiary';
+import {type TKey, type TKeyVariant} from "../types/keyTypes.ts"
 
 type TButtonProps = {
-    label: TLabel;
-    variant: TVariant;
+    label: TKey;
+    variant: TKeyVariant;
+    setEntryStack: React.Dispatch<React.SetStateAction<TKey[]>>
+
 }
 
-export default function CalculatorButton({label, variant} : TButtonProps) {
+export default function CalculatorButton({label, variant, setEntryStack} : TButtonProps) {
+    
+    function handleClick() {
+        setEntryStack(current => {current = structuredClone(current); current.push(label); return current})
+    }
+
     let className = "cursor-pointer text-3xl";
 
     if (variant === 'primary') {
@@ -17,5 +23,5 @@ export default function CalculatorButton({label, variant} : TButtonProps) {
         className += " bg-red-500 text-green-600";
     }
 
-    return (<button className={className}>{label}</button>)
+    return (<button className={className} onClick={handleClick}>{label}</button>)
 }

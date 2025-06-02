@@ -1,15 +1,16 @@
-import CalculatorButton, { type TLabel, type TVariant } from "./CalculatorButton";
+import {type TKey, type TKeyVariant} from "../types/keyTypes.ts"
 import buttonData from "../buttonData.json";
 import { getFrom2DArray } from "../utils/utils";
+import CalculatorButton from "./CalculatorButton.tsx";
 
 const COLUMN_COUNT = 4;
 const ROW_COUNT = 5;
 
 type propTypes = {
-    setEntryStack
+    setEntryStack: React.Dispatch<React.SetStateAction<TKey[]>>
 }
 
-export default function CalculatorBody({setEntryStack}) {
+export default function CalculatorBody({setEntryStack} : propTypes) {
     const buttons = [];
 
     for (let row = 0; row < ROW_COUNT; row++) {
@@ -17,15 +18,15 @@ export default function CalculatorBody({setEntryStack}) {
             const label = getFrom2DArray(buttonData.labels, col, row)
             const variantIndex = getFrom2DArray(buttonData.variants, col, row)
 
-            if (label === undefined || variantIndex === undefined) continue;
-
             const variant = ['primary', 'secondary', 'tertiary'][variantIndex as number];
 
             buttons.push(
                 <CalculatorButton 
                     key={`${col}-${row}`} 
-                    label={label as TLabel} 
-                    variant={variant as TVariant}
+                    label={label as TKey} 
+                    variant={variant as TKeyVariant}
+                    setEntryStack={setEntryStack}
+
                 />
             )
         }

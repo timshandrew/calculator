@@ -1,15 +1,15 @@
 import { useState } from "react";
 import CalculatorBody from "./CalculatorBody";
 import CalculatorScreen from "./CalculatorScreen";
-import {type TLabel} from "./CalculatorButton"
+import {type TKey} from "../types/keyTypes.ts"
 
 export default function Calculator() {
-    const [entryStack, setEntryStack] = useState<TLabel>([]);
+    const [entryStack, setEntryStack] = useState<TKey[]>([]);
 
     return (
         <div>
             <CalculatorScreen stack={entryStack}/>
-            <CalculatorBody />
+            <CalculatorBody setEntryStack={setEntryStack}/>
         </div>
     )
 }
