@@ -1,15 +1,16 @@
 import { useState } from "react";
 import CalculatorBody from "./CalculatorBody";
 import CalculatorScreen from "./CalculatorScreen";
-import {type TKey} from "../types/keyTypes.ts"
+
+import { type MathSymbol } from "../types/sharedTypes";
 
 export default function Calculator() {
-    const [entryStack, setEntryStack] = useState<TKey[]>([]);
+    const [expression, setExpression] = useState<MathSymbol[]>([]);
 
     return (
         <div>
-            <CalculatorScreen stack={entryStack}/>
-            <CalculatorBody setEntryStack={setEntryStack}/>
+            <CalculatorScreen expression={expression} />
+            <CalculatorBody setExpression={setExpression} />
         </div>
     )
 }

@@ -1,16 +1,17 @@
-import {type TKey, type TKeyVariant} from "../types/keyTypes.ts"
 import buttonData from "../buttonData.json";
 import { getFrom2DArray } from "../utils/utils";
 import CalculatorButton from "./CalculatorButton.tsx";
 
+import { type MathSymbol, type KeyThemeVariant, type CalculatorKeyLabel } from "../types/sharedTypes";
+
 const COLUMN_COUNT = 4;
 const ROW_COUNT = 5;
 
-type propTypes = {
-    setEntryStack: React.Dispatch<React.SetStateAction<TKey[]>>
+type CalculatorBodyProps = {
+    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
 }
 
-export default function CalculatorBody({setEntryStack} : propTypes) {
+export default function CalculatorBody({ setExpression } : CalculatorBodyProps) {
     const buttons = [];
 
     for (let row = 0; row < ROW_COUNT; row++) {
@@ -23,9 +24,9 @@ export default function CalculatorBody({setEntryStack} : propTypes) {
             buttons.push(
                 <CalculatorButton 
                     key={`${col}-${row}`} 
-                    label={label as TKey} 
-                    variant={variant as TKeyVariant}
-                    setEntryStack={setEntryStack}
+                    label={label as CalculatorKeyLabel} 
+                    variant={variant as KeyThemeVariant}
+                    setExpression={setExpression}
 
                 />
             )

@@ -1,16 +1,15 @@
-import {type TKey, type TKeyVariant} from "../types/keyTypes.ts"
+import {type MathSymbol, type KeyThemeVariant, type CalculatorKeyLabel } from "../types/sharedTypes";
 
-type TButtonProps = {
-    label: TKey;
-    variant: TKeyVariant;
-    setEntryStack: React.Dispatch<React.SetStateAction<TKey[]>>
-
+type CalculatorButtonProps = {
+    label: CalculatorKeyLabel;
+    variant: KeyThemeVariant;
+    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
 }
 
-export default function CalculatorButton({label, variant, setEntryStack} : TButtonProps) {
+export default function CalculatorButton({label, variant, setExpression} : CalculatorButtonProps) {
     
     function handleClick() {
-        setEntryStack(current => {current = structuredClone(current); current.push(label); return current})
+        setExpression(current => {current = structuredClone(current); current.push(label); return current})
     }
 
     let className = "cursor-pointer text-3xl";

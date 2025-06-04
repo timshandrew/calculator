@@ -1,9 +1,9 @@
-import {type TLabel} from "./CalculatorButton";
+import { type MathSymbol } from "../types/sharedTypes";
 
-type propTypes = {
-    stack: TLabel[]
+type CalculatorScreenProps = {
+    expression: MathSymbol[]
 }
 
-export default function CalculatorScreen({stack} : propTypes) {
-    return (<div>{stack}</div>)
+export default function CalculatorScreen({ expression } : CalculatorScreenProps) {
+    return (<div>{expression}</div>)
 }
