@@ -8,10 +8,11 @@ const COLUMN_COUNT = 4;
 const ROW_COUNT = 5;
 
 type CalculatorBodyProps = {
+    expression: MathSymbol[];
     setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
 }
 
-export default function CalculatorBody({ setExpression } : CalculatorBodyProps) {
+export default function CalculatorBody({ expression, setExpression } : CalculatorBodyProps) {
     const buttons = [];
 
     for (let row = 0; row < ROW_COUNT; row++) {
@@ -26,6 +27,7 @@ export default function CalculatorBody({ setExpression } : CalculatorBodyProps) 
                     key={`${col}-${row}`} 
                     label={label as CalculatorKeyLabel} 
                     variant={variant as KeyThemeVariant}
+                    expression={expression}
                     setExpression={setExpression}
 
                 />

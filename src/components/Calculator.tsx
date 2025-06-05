@@ -10,7 +10,7 @@ export default function Calculator() {
     return (
         <div>
             <CalculatorScreen expression={expression} />
-            <CalculatorBody setExpression={setExpression} />
+            <CalculatorBody expression={expression} setExpression={setExpression} />
         </div>
     )
 }
