@@ -5,7 +5,7 @@ import CalculatorScreen from "./CalculatorScreen";
 import { type MathSymbol } from "../types/sharedTypes";
 
 export default function Calculator() {
-    const [expression, setExpression] = useState<MathSymbol[]>([]);
+    const [expression, setExpression] = useState<MathSymbol[]>([0]);
 
     return (
         <div>

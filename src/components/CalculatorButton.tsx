@@ -1,5 +1,5 @@
 import {type MathSymbol, type KeyThemeVariant, type CalculatorKeyLabel } from "../types/sharedTypes";
-import { evaluateMathExpression, formMathExpression } from "../utils/utils";
+import { evaluateMathExpression, formMathExpression, hasLeadingZero } from "../utils/utils";
 
 type CalculatorButtonProps = {
     label: CalculatorKeyLabel;
@@ -9,15 +9,17 @@ type CalculatorButtonProps = {
 }
 
 export default function CalculatorButton({label, variant, expression, setExpression} : CalculatorButtonProps) {
-    
     function handleClick() {
         switch (label) {
             case "RESET": {
-                setExpression([])
+                setExpression([0])
                 break;
             }
             case "DEL": {
-                setExpression(array => {array = structuredClone(array); array.pop(); return array});
+                const nextExpression = structuredClone(expression)
+                nextExpression.pop()
+                if (nextExpression.length === 0) nextExpression.push(0);
+                setExpression(nextExpression);
                 break;
             }
             case "=": {
@@ -27,7 +29,20 @@ export default function CalculatorButton({label, variant, expression, setExpress
                 break;
             }
             default: {
-                setExpression(array => {array = structuredClone(array); array.push(label); return array;})
+                const nextExpression = structuredClone(expression)
+                const topSymbol = nextExpression[nextExpression.length - 1]
+
+                // Allows the user to replace a leading zero or operator by entering another one.
+                // Maybe change the switch to an if-conditional and move the typeof operator to a separate 'case'.
+                if (typeof label === "number" && hasLeadingZero(expression)) {
+                    nextExpression[nextExpression.length - 1] = label;
+                } else if (isOperator(label as string) && isOperator(topSymbol as string)) {
+                    nextExpression[nextExpression.length - 1] = label;
+                } else {
+                    nextExpression.push(label);
+                }
+
+                setExpression(nextExpression);
             }
         }
     }
@@ -43,4 +58,8 @@ export default function CalculatorButton({label, variant, expression, setExpress
     }
 
     return (<button className={className} onClick={handleClick}>{label}</button>)
+}
+
+const isOperator = (symbol: string): boolean => {
+    return ["+", "-", "x", "/", "."].includes(symbol);
 }
