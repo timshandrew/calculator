@@ -6,11 +6,12 @@ type CalculatorButtonProps = {
     variant: KeyThemeVariant;
     expression: MathSymbol[];
     setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>;
-    columnSpan: number
+    columnSpan: number;
+    gridOrigin: {"column": number, "row": number};
 }
 
-export default function CalculatorButton({label, variant, expression, setExpression, columnSpan} : CalculatorButtonProps) {
-    let className = `cursor-pointer text-3xl col-span-${columnSpan}`;
+export default function CalculatorButton({label, variant, expression, setExpression, columnSpan, gridOrigin} : CalculatorButtonProps) {
+    let className = `cursor-pointer text-3xl`;
  
     if (variant === 'primary') {
         className += " bg-blue-500 text-yellow-200";
@@ -18,6 +19,14 @@ export default function CalculatorButton({label, variant, expression, setExpress
         className += " bg-purple-500 text-green-600";
     } else if (variant === 'tertiary') {
         className += " bg-red-500 text-green-600";
+    }
+
+    // Using inline styles here because there would be too many prop-to-style mappings required to get Tailwind to
+    // generate the classes for each of the grid-rows/grid-column utilities. In the case for the variants above, there
+    // are only a few possible literal values the prop can take. There are quite a few row/column values.
+    const inlineStyles = {
+        gridRow: gridOrigin.row,
+        gridColumn: `${gridOrigin.column} / span ${columnSpan}`,
     }
 
     function handleClick() {
@@ -58,7 +67,7 @@ export default function CalculatorButton({label, variant, expression, setExpress
         }
     }
 
-    return (<button className={className} onClick={handleClick}>{label}</button>)
+    return (<button className={className} style={inlineStyles} onClick={handleClick}>{label}</button>)
 }
 
 const isOperator = (symbol: string): boolean => {

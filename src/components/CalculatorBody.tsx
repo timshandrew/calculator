@@ -10,11 +10,10 @@ type CalculatorBodyProps = {
 export default function CalculatorBody({ expression, setExpression } : CalculatorBodyProps) {
     const buttons: React.JSX.Element[] = createButtons(expression, setExpression)
 
-    return (<div className="grid grid-cols-4 grid-rows-5 gap-2">
+    return (<div className="grid gap-2">
         {buttons}
     </div>)
 }
-
 
 type CreateButtonsType = (
     expression: MathSymbol[], 
@@ -31,7 +30,8 @@ const createButtons: CreateButtonsType = (expression, setExpression) => {
                 setExpression={setExpression}
                 label={button.value as CalculatorKeyLabel}
                 variant={button.variant as KeyThemeVariant}
-                columnSpan={button.gridSpan.x}
+                columnSpan={button.gridSpan.column}
+                gridOrigin={button.gridOrigin}
         />)
     }
 
