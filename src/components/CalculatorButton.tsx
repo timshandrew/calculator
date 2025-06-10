@@ -5,12 +5,13 @@ type CalculatorButtonProps = {
     label: CalculatorKeyLabel;
     variant: KeyThemeVariant;
     expression: MathSymbol[];
-    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
+    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>;
+    columnSpan: number
 }
 
-export default function CalculatorButton({label, variant, expression, setExpression} : CalculatorButtonProps) {
-    let className = "cursor-pointer text-3xl";
-
+export default function CalculatorButton({label, variant, expression, setExpression, columnSpan} : CalculatorButtonProps) {
+    let className = `cursor-pointer text-3xl col-span-${columnSpan}`;
+ 
     if (variant === 'primary') {
         className += " bg-blue-500 text-yellow-200";
     } else if (variant === 'secondary') {
@@ -18,7 +19,7 @@ export default function CalculatorButton({label, variant, expression, setExpress
     } else if (variant === 'tertiary') {
         className += " bg-red-500 text-green-600";
     }
-    
+
     function handleClick() {
         switch (label) {
             case "RESET": {

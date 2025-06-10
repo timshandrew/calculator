@@ -1,17 +1,11 @@
 import React from "react";
 import buttonData from "../buttonData.json";
-import { getFrom2DArray } from "../utils/utils";
 import CalculatorButton from "./CalculatorButton.tsx";
-
 import { type MathSymbol, type KeyThemeVariant, type CalculatorKeyLabel } from "../types/sharedTypes";
-
-const COLUMN_COUNT = 4;
-const ROW_COUNT = 5;
 
 type CalculatorBodyProps = {
     expression: MathSymbol[];
-    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
-}
+    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>}
 
 export default function CalculatorBody({ expression, setExpression } : CalculatorBodyProps) {
     const buttons: React.JSX.Element[] = createButtons(expression, setExpression)
@@ -27,27 +21,18 @@ type CreateButtonsType = (
     setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
 ) => React.JSX.Element[]
 
-
 const createButtons: CreateButtonsType = (expression, setExpression) => {
     const buttons: React.JSX.Element[] = [];
 
-    for (let row = 0; row < ROW_COUNT; row++) {
-        for (let col = 0; col < COLUMN_COUNT; col++) {
-            const label = getFrom2DArray(buttonData.labels, col, row)
-            const variantIndex = getFrom2DArray(buttonData.variants, col, row)
-
-            const variant = ['primary', 'secondary', 'tertiary'][variantIndex as number];
-
-            buttons.push(
-                <CalculatorButton 
-                    key={`${col}-${row}`} 
-                    label={label as CalculatorKeyLabel} 
-                    variant={variant as KeyThemeVariant}
-                    expression={expression}
-                    setExpression={setExpression}
-                />
-            )
-        }
+    for (const button of buttonData) {
+        buttons.push(
+            <CalculatorButton 
+                expression={expression} 
+                setExpression={setExpression}
+                label={button.value as CalculatorKeyLabel}
+                variant={button.variant as KeyThemeVariant}
+                columnSpan={button.gridSpan.x}
+        />)
     }
 
     return buttons;
