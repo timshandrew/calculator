@@ -1,3 +1,4 @@
+import React from "react";
 import buttonData from "../buttonData.json";
 import { getFrom2DArray } from "../utils/utils";
 import CalculatorButton from "./CalculatorButton.tsx";
@@ -13,7 +14,22 @@ type CalculatorBodyProps = {
 }
 
 export default function CalculatorBody({ expression, setExpression } : CalculatorBodyProps) {
-    const buttons = [];
+    const buttons: React.JSX.Element[] = createButtons(expression, setExpression)
+
+    return (<div className="grid grid-cols-4 grid-rows-5 gap-2">
+        {buttons}
+    </div>)
+}
+
+
+type CreateButtonsType = (
+    expression: MathSymbol[], 
+    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
+) => React.JSX.Element[]
+
+
+const createButtons: CreateButtonsType = (expression, setExpression) => {
+    const buttons: React.JSX.Element[] = [];
 
     for (let row = 0; row < ROW_COUNT; row++) {
         for (let col = 0; col < COLUMN_COUNT; col++) {
@@ -29,13 +45,10 @@ export default function CalculatorBody({ expression, setExpression } : Calculato
                     variant={variant as KeyThemeVariant}
                     expression={expression}
                     setExpression={setExpression}
-
                 />
             )
         }
     }
 
-    return (<div className="grid grid-cols-4 grid-rows-5 gap-2">
-        {buttons}
-    </div>)
+    return buttons;
 }

@@ -9,6 +9,16 @@ type CalculatorButtonProps = {
 }
 
 export default function CalculatorButton({label, variant, expression, setExpression} : CalculatorButtonProps) {
+    let className = "cursor-pointer text-3xl";
+
+    if (variant === 'primary') {
+        className += " bg-blue-500 text-yellow-200";
+    } else if (variant === 'secondary') {
+        className += " bg-purple-500 text-green-600";
+    } else if (variant === 'tertiary') {
+        className += " bg-red-500 text-green-600";
+    }
+    
     function handleClick() {
         switch (label) {
             case "RESET": {
@@ -45,16 +55,6 @@ export default function CalculatorButton({label, variant, expression, setExpress
                 setExpression(nextExpression);
             }
         }
-    }
-
-    let className = "cursor-pointer text-3xl";
-
-    if (variant === 'primary') {
-        className += " bg-blue-500 text-yellow-200";
-    } else if (variant === 'secondary') {
-        className += " bg-purple-500 text-green-600";
-    } else if (variant === 'tertiary') {
-        className += " bg-red-500 text-green-600";
     }
 
     return (<button className={className} onClick={handleClick}>{label}</button>)
