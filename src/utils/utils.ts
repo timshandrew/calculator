@@ -4,6 +4,12 @@ export function formMathExpression(expressionArray: MathSymbol[]): string {
     return expressionArray.toString().replace(new RegExp(",", "g"), "").replace(new RegExp("x", "g"), "*");
 }
 
+// Credit to https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators#:~:text=1%20more%20comment-,52%20Answers,-Sorted%20by%3A
+// for the regex.
+export function formatMathExpression(expression: string): string {
+    return expression.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
+}
+
 export function evaluateMathExpression(wellFormedExpression: string): number  {
     const evaluatedExpression = eval(wellFormedExpression);
 

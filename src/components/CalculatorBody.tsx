@@ -10,7 +10,7 @@ type CalculatorBodyProps = {
 export default function CalculatorBody({ expression, setExpression } : CalculatorBodyProps) {
     const buttons: React.JSX.Element[] = createButtons(expression, setExpression)
 
-    return (<div className="grid gap-2">
+    return (<div className="grid bg-black auto-rows-[4rem] auto-cols-[4rem] gap-2">
         {buttons}
     </div>)
 }
