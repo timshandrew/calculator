@@ -1,4 +1,5 @@
-export type MathOperator = '.' | '+' | '-' | 'x' | '/'
-export type MathSymbol = number | MathOperator
-export type CalculatorKeyLabel = MathSymbol | 'DEL' | 'RESET' | '='
-export type KeyThemeVariant = 'primary' | 'secondary' | 'tertiary';
+export type MathOperator = "." | "+" | "-" | "x" | "/";
+export type MathSymbol = number | MathOperator;
+export type CalculatorKeyLabel = MathSymbol | "DEL" | "RESET" | "=";
+export type KeyThemeVariant = "primary" | "secondary" | "tertiary";
+export type AppTheme = "1" | "2" | "3";
