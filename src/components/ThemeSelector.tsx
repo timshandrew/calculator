@@ -20,8 +20,10 @@ export default function ThemeSelector({ theme, setTheme }: ThemeSelectorProps) {
   }
   return (
     // Div was used instead of the more semantic 'fieldset', as the latter has some weird positioning quirks.
-    <div className="grid gap-2 tripleSwitch" onClick={clickHandler}>
-      <span className="col-start-1 row-start-2">Theme</span>
+    <div
+      className="grid tripleSwitch justify-items-center"
+      onClick={clickHandler}>
+      <span className="col-start-1 row-start-2 mr-2">Theme</span>
 
       <label
         className="col-start-2 row-start-1"
@@ -68,7 +70,9 @@ export default function ThemeSelector({ theme, setTheme }: ThemeSelectorProps) {
         checked={theme === "3"}
       />
 
-      <span className="tripleSwitch-slider" aria-hidden></span>
+      <span
+        className="tripleSwitch-slider col-start-2 col-end-5 w-[70px]"
+        aria-hidden></span>
     </div>
   );
 }
