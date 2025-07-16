@@ -1,9 +1,10 @@
+import ThemeSelector from "./ThemeSelector";
+
 export default function CalculatorHeader() {
-    return (
+  return (
     <div className="flex justify-between">
-        <h1>Calc</h1>
-        <div>
-            <span>theme toggle</span>
-            </div>
-    </div>)
+      <h1>Calc</h1>
+      <ThemeSelector />
+    </div>
+  );
 }
