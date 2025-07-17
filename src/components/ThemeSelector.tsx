@@ -71,7 +71,7 @@ export default function ThemeSelector({ theme, setTheme }: ThemeSelectorProps) {
       />
 
       <span
-        className="tripleSwitch-slider col-start-2 col-end-5 w-[70px]"
+        className="tripleSwitch-slider col-start-2 col-end-5 w-[70px] bg-bg-keypad"
         aria-hidden></span>
     </div>
   );

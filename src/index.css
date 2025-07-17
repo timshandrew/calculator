@@ -9,7 +9,7 @@
   --color-bg-key-main: var(--clr-bg-key-main);
   --color-bg-key-secondary: var(--clr-bg-key-secondary);
   --color-text-secondary: var(--clr-text-secondary);
-  --color-text-secondary-inverse: var(--clr-text-accent-inverse);
+  --color-text-secondary-inverse: var(--clr-text-secondary-inverse);
 }
 
 .theme1 {
@@ -69,7 +69,6 @@ body {
 .tripleSwitch-slider {
   display: flex;
   align-items: center;
-  background-color: red;
   border-radius: 50px;
   grid-row: 2;
   position: relative;
@@ -78,11 +77,11 @@ body {
 }
 
 .tripleSwitch-slider::before {
+  @apply bg-bg-accent;
   content: "";
   position: absolute;
-  background-color: green;
   aspect-ratio: 1;
-  height: 80%;
+  height: 70%;
   border-radius: 500px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;

@@ -12,7 +12,7 @@ export default function CalculatorScreen({
     expression.toString().replace(new RegExp(",", "g"), "")
   );
   return (
-    <div className="bg-black text-white text-end p-2 mb-4">
+    <div className="bg-bg-screen text-text-main text-end p-2 mb-4">
       {formattedExpression}
     </div>
   );

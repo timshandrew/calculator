@@ -19,7 +19,7 @@ export default function CalculatorBody({
   const buttons: React.JSX.Element[] = createButtons(expression, setExpression);
 
   return (
-    <div className="grid bg-black auto-rows-[4rem] auto-cols-[4rem] gap-2 p-4">
+    <div className="grid bg-bg-keypad auto-rows-[4rem] auto-cols-[4rem] gap-2 p-4">
       {buttons}
     </div>
   );
