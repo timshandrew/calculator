@@ -1,39 +1,50 @@
 import React from "react";
 import buttonData from "../buttonData.json";
 import CalculatorButton from "./CalculatorButton.tsx";
-import { type MathSymbol, type KeyThemeVariant, type CalculatorKeyLabel } from "../types/sharedTypes";
+import {
+  type MathSymbol,
+  type KeyThemeVariant,
+  type CalculatorKeyLabel,
+} from "../types/sharedTypes";
 
 type CalculatorBodyProps = {
-    expression: MathSymbol[];
-    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>}
+  expression: MathSymbol[];
+  setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>;
+};
 
-export default function CalculatorBody({ expression, setExpression } : CalculatorBodyProps) {
-    const buttons: React.JSX.Element[] = createButtons(expression, setExpression)
+export default function CalculatorBody({
+  expression,
+  setExpression,
+}: CalculatorBodyProps) {
+  const buttons: React.JSX.Element[] = createButtons(expression, setExpression);
 
-    return (<div className="grid bg-black auto-rows-[4rem] auto-cols-[4rem] gap-2">
-        {buttons}
-    </div>)
+  return (
+    <div className="grid bg-black auto-rows-[4rem] auto-cols-[4rem] gap-2 p-4">
+      {buttons}
+    </div>
+  );
 }
 
 type CreateButtonsType = (
-    expression: MathSymbol[], 
-    setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
-) => React.JSX.Element[]
+  expression: MathSymbol[],
+  setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
+) => React.JSX.Element[];
 
 const createButtons: CreateButtonsType = (expression, setExpression) => {
-    const buttons: React.JSX.Element[] = [];
+  const buttons: React.JSX.Element[] = [];
 
-    for (const button of buttonData) {
-        buttons.push(
-            <CalculatorButton 
-                expression={expression} 
-                setExpression={setExpression}
-                label={button.value as CalculatorKeyLabel}
-                variant={button.variant as KeyThemeVariant}
-                columnSpan={button.gridSpan.column}
-                gridOrigin={button.gridOrigin}
-        />)
-    }
+  for (const button of buttonData) {
+    buttons.push(
+      <CalculatorButton
+        expression={expression}
+        setExpression={setExpression}
+        label={button.value as CalculatorKeyLabel}
+        variant={button.variant as KeyThemeVariant}
+        columnSpan={button.gridSpan.column}
+        gridOrigin={button.gridOrigin}
+      />
+    );
+  }
 
-    return buttons;
-}
+  return buttons;
+};

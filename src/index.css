@@ -1,5 +1,59 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-bg-app: var(--clr-bg-app);
+  --color-bg-accent: var(--clr-bg-accent);
+  --color-bg-screen: var(--clr-bg-screen);
+  --color-bg-keypad: var(--clr-bg-keypad);
+  --color-text-main: var(--clr-text-main);
+  --color-bg-key-main: var(--clr-bg-key-main);
+  --color-bg-key-secondary: var(--clr-bg-key-secondary);
+  --color-text-secondary: var(--clr-text-secondary);
+  --color-text-secondary-inverse: var(--clr-text-accent-inverse);
+}
+
+.theme1 {
+  --clr-bg-app: #3a4663;
+  --clr-bg-accent: #d03f2f;
+  --clr-bg-screen: #181f33;
+  --clr-bg-keypad: #242d44;
+  --clr-bg-key-main: #eae3dc;
+  --clr-bg-key-secondary: #647198;
+  --clr-text-main: #ffffff;
+  --clr-text-secondary: #434a59;
+  /* Problem here - this colour is used as an inverse in one theme only. Otherwise it is the same as 
+     the text secondary colour. Is there a more semantically fitting name? */
+  --clr-text-secondary-inverse: #ffffff;
+}
+
+.theme2 {
+  --clr-bg-app: #e6e6e6;
+  --clr-bg-accent: #c85402;
+  --clr-bg-screen: #eeeeee;
+  --clr-bg-keypad: #d2cdcd;
+  --clr-bg-key-main: #e5e4e1;
+  --clr-bg-key-secondary: #378187;
+  --clr-text-main: #36362c;
+  --clr-text-secondary: #ffffff;
+  --clr-text-secondary-inverse: #ffffff;
+}
+
+.theme3 {
+  --clr-bg-app: #17062a;
+  --clr-bg-accent: #00ded0;
+  --clr-bg-screen: #1e0936;
+  --clr-bg-keypad: #1e0936;
+  --clr-bg-key-main: #331c4d;
+  --clr-bg-key-secondary: #56077c;
+  --clr-text-main: #ffe53d;
+  --clr-text-secondary: #ffffff;
+  --clr-text-secondary-inverse: #1a2327;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+}
+
 .tripleSwitch {
   cursor: pointer;
 }
