@@ -5,18 +5,25 @@ import {
   type MathSymbol,
   type KeyThemeVariant,
   type CalculatorKeyLabel,
+  type AppTheme,
 } from "../types/sharedTypes";
 
 type CalculatorBodyProps = {
   expression: MathSymbol[];
   setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>;
+  theme: AppTheme;
 };
 
 export default function CalculatorBody({
   expression,
   setExpression,
+  theme,
 }: CalculatorBodyProps) {
-  const buttons: React.JSX.Element[] = createButtons(expression, setExpression);
+  const buttons: React.JSX.Element[] = createButtons(
+    expression,
+    setExpression,
+    theme
+  );
 
   return (
     <div className="grid bg-bg-keypad auto-rows-[4rem] auto-cols-[4rem] gap-2 p-4">
@@ -27,10 +34,11 @@ export default function CalculatorBody({
 
 type CreateButtonsType = (
   expression: MathSymbol[],
-  setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>
+  setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>,
+  theme: AppTheme
 ) => React.JSX.Element[];
 
-const createButtons: CreateButtonsType = (expression, setExpression) => {
+const createButtons: CreateButtonsType = (expression, setExpression, theme) => {
   const buttons: React.JSX.Element[] = [];
 
   for (const button of buttonData) {
@@ -42,6 +50,7 @@ const createButtons: CreateButtonsType = (expression, setExpression) => {
         variant={button.variant as KeyThemeVariant}
         columnSpan={button.gridSpan.column}
         gridOrigin={button.gridOrigin}
+        theme={theme}
       />
     );
   }

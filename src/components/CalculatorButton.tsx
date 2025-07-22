@@ -2,6 +2,7 @@ import {
   type MathSymbol,
   type KeyThemeVariant,
   type CalculatorKeyLabel,
+  type AppTheme,
 } from "../types/sharedTypes";
 import {
   evaluateMathExpression,
@@ -16,6 +17,7 @@ type CalculatorButtonProps = {
   setExpression: React.Dispatch<React.SetStateAction<MathSymbol[]>>;
   columnSpan: number;
   gridOrigin: { column: number; row: number };
+  theme: AppTheme;
 };
 
 export default function CalculatorButton({
@@ -25,13 +27,14 @@ export default function CalculatorButton({
   setExpression,
   columnSpan,
   gridOrigin,
+  theme,
 }: CalculatorButtonProps) {
   let className = `cursor-pointer text-3xl`;
 
   if (variant === "primary") {
-    className += " bg-bg-key-main text-text-main";
+    className += ` bg-bg-key-main ${theme === "1" ? "text-text-secondary" : "text-text-main"}`;
   } else if (variant === "secondary") {
-    className += " bg-bg-key-secondary text-text-secondary";
+    className += ` bg-bg-key-secondary ${theme === "1" ? "text-text-main" : "text-text-secondary"}`;
   } else if (variant === "tertiary") {
     className += " bg-bg-accent text-text-secondary-inverse";
   }
