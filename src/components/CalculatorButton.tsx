@@ -29,7 +29,7 @@ export default function CalculatorButton({
   gridOrigin,
   theme,
 }: CalculatorButtonProps) {
-  let className = `cursor-pointer font-bold rounded-lg inset-shadow-solid`;
+  let className = `cursor-pointer font-bold rounded-lg inset-shadow-solid active:scale-96`;
 
   if (variant === "primary") {
     className += ` inset-shadow-shadow-main bg-bg-key-main text-3xl ${theme === "1" ? "text-text-secondary" : "text-text-main"}`;
