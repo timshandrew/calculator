@@ -23,10 +23,12 @@ export default function ThemeSelector({ theme, setTheme }: ThemeSelectorProps) {
     <div
       className="grid tripleSwitch justify-items-center"
       onClick={clickHandler}>
-      <span className="col-start-1 row-start-2 mr-2">Theme</span>
+      <span className="col-start-1 uppercase font-bold text-xs row-start-2 mr-2">
+        Theme
+      </span>
 
       <label
-        className="col-start-2 row-start-1"
+        className="text-xs font-bold col-start-2 row-start-1"
         htmlFor="1"
         onClick={clickHandler}>
         1
@@ -41,7 +43,7 @@ export default function ThemeSelector({ theme, setTheme }: ThemeSelectorProps) {
       />
 
       <label
-        className="col-start-3 row-start-1"
+        className="text-xs font-bold col-start-3 row-start-1"
         htmlFor="2"
         onClick={clickHandler}>
         2
@@ -56,7 +58,7 @@ export default function ThemeSelector({ theme, setTheme }: ThemeSelectorProps) {
       />
 
       <label
-        className="col-start-4 row-start-1"
+        className="text-xs font-bold col-start-4 row-start-1"
         htmlFor="3"
         onClick={clickHandler}>
         3

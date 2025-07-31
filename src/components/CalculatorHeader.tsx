@@ -13,7 +13,7 @@ export default function CalculatorHeader({
 }: CalculatorHeaderProps) {
   return (
     <div className="flex justify-between items-center mb-4 text-text-main">
-      <h1>Calc</h1>
+      <h1 className="text-3xl font-bold">calc</h1>
       <ThemeSelector theme={theme} setTheme={setTheme} />
     </div>
   );
