@@ -29,14 +29,15 @@ export default function CalculatorButton({
   gridOrigin,
   theme,
 }: CalculatorButtonProps) {
-  let className = `cursor-pointer font-bold`;
+  let className = `cursor-pointer font-bold rounded-lg inset-shadow-solid`;
 
   if (variant === "primary") {
-    className += ` bg-bg-key-main text-3xl ${theme === "1" ? "text-text-secondary" : "text-text-main"}`;
+    className += ` inset-shadow-shadow-main bg-bg-key-main text-3xl ${theme === "1" ? "text-text-secondary" : "text-text-main"}`;
   } else if (variant === "secondary") {
-    className += ` bg-bg-key-secondary text-xl ${theme === "1" ? "text-text-main" : "text-text-secondary"}`;
+    className += ` inset-shadow-shadow-secondary bg-bg-key-secondary text-xl ${theme === "1" ? "text-text-main" : "text-text-secondary"}`;
   } else if (variant === "tertiary") {
-    className += " bg-bg-accent text-xl text-text-secondary-inverse";
+    className +=
+      " inset-shadow-shadow-accent bg-bg-accent text-xl text-text-secondary-inverse";
   }
 
   // Using inline styles here because there would be too many prop-to-style mappings required to get Tailwind to

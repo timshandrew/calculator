@@ -10,6 +10,12 @@
   --color-bg-key-secondary: var(--clr-bg-key-secondary);
   --color-text-secondary: var(--clr-text-secondary);
   --color-text-secondary-inverse: var(--clr-text-secondary-inverse);
+
+  --color-shadow-main: var(--clr-shadow-main);
+  --color-shadow-secondary: var(--clr-shadow-secondary);
+  --color-shadow-accent: var(--clr-shadow-accent);
+
+  --inset-shadow-solid: inset 0 -4px red;
 }
 
 .theme1 {
@@ -24,6 +30,10 @@
   /* Problem here - this colour is used as an inverse in one theme only. Otherwise it is the same as 
      the text secondary colour. Is there a more semantically fitting name? */
   --clr-text-secondary-inverse: #ffffff;
+
+  --clr-shadow-main: #b3a497;
+  --clr-shadow-secondary: #414e73;
+  --clr-shadow-accent: #93261a;
 }
 
 .theme2 {
@@ -36,6 +46,10 @@
   --clr-text-main: #36362c;
   --clr-text-secondary: #ffffff;
   --clr-text-secondary-inverse: #ffffff;
+
+  --clr-shadow-main: #a79e91;
+  --clr-shadow-secondary: #1b6066;
+  --clr-shadow-accent: #873901;
 }
 
 .theme3 {
@@ -48,6 +62,10 @@
   --clr-text-main: #ffe53d;
   --clr-text-secondary: #ffffff;
   --clr-text-secondary-inverse: #1a2327;
+
+  --clr-shadow-main: #881c9e;
+  --clr-shadow-secondary: #be15f4;
+  --clr-shadow-accent: #6cf9f1;
 }
 
 body {

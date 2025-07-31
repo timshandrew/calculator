@@ -26,7 +26,7 @@ export default function CalculatorBody({
   );
 
   return (
-    <div className="grid bg-bg-keypad auto-rows-[4rem] auto-cols-[4rem] gap-2 p-4">
+    <div className="grid rounded-lg bg-bg-keypad auto-rows-[4rem] auto-cols-[4rem] gap-2 p-4">
       {buttons}
     </div>
   );
