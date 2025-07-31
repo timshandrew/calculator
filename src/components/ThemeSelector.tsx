@@ -15,13 +15,11 @@ export default function ThemeSelector({ theme, setTheme }: ThemeSelectorProps) {
     } else {
       setTheme("1");
     }
-
-    console.log("clicked");
   }
   return (
     // Div was used instead of the more semantic 'fieldset', as the latter has some weird positioning quirks.
     <div
-      className="grid tripleSwitch justify-items-center"
+      className="grid tripleSwitch items-center justify-items-center"
       onClick={clickHandler}>
       <span className="col-start-1 uppercase font-bold text-xs row-start-2 mr-2">
         Theme

@@ -1,0 +1,5 @@
+-- Bugs --
+After evaluating an expression using the equals button, the display input is now a single number. Thus 
+when we press DEL, it has the same effect as RESET.
+
+Add type for ThemeSelector click function.

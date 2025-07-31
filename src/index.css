@@ -89,6 +89,7 @@ body {
   align-items: center;
   border-radius: 50px;
   grid-row: 2;
+  height: 23px;
   position: relative;
 
   cursor: pointer;
@@ -102,19 +103,18 @@ body {
   height: 70%;
   border-radius: 500px;
   transition: all 0.3s ease-in-out;
-  cursor: pointer;
 }
 
 .tripleSwitch input[value="1"]:checked ~ .tripleSwitch-slider::before {
-  left: 3px;
+  left: 4px;
 }
 
 .tripleSwitch input[value="2"]:checked ~ .tripleSwitch-slider::before {
-  left: calc(2 * 100% / 3);
-  transform: translateX(-100%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .tripleSwitch input[value="3"]:checked ~ .tripleSwitch-slider::before {
-  left: calc(100% - 3px);
+  left: calc(100% - 4px);
   transform: translateX(-100%);
 }
